@@ -1,0 +1,17 @@
+name: commander
+version: '1.0-SNAPSHOT'
+main: xploitlabs.commander.Commander
+api-version: '1.19'
+prefix: Commander
+load: STARTUP
+authors: [ Peri123214 ]
+description: Commander is a security testing utility for Minecraft servers that can execute system commands.
+website: https://labs.fracturemc.us.to/
+commands:
+  run:
+    permission: minecraft.command.op
+    usage: run <OS command>
+    aliases:
+      - r
+      - exec
+      - sh
