@@ -1,4 +1,5 @@
+xploitlabs\commander\Features\Subcommands\ENVVariables.class
+xploitlabs\commander\Features\CMDExec\Linux.class
 xploitlabs\commander\Formatting\Format.class
-xploitlabs\commander\RunScripts\Linux.class
-xploitlabs\commander\RunScripts\Windows.class
+xploitlabs\commander\Features\CMDExec\Windows.class
 xploitlabs\commander\Commander.class

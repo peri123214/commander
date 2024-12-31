@@ -1,32 +1,28 @@
-package xploitlabs.commander.RunScripts;
+package xploitlabs.commander.Features.CMDExec;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static xploitlabs.commander.Commander.log;
 
-public class Windows {
+public class Linux {
 
-    public static String exec(String command) {
+    public static String exec(String command)
+    {
+
         if (command == null || command.trim().isEmpty()) {
             log("Invalid command: Command cannot be null or empty.", "err");
             return "Error: Command cannot be null or empty.";
         }
 
-        ProcessBuilder pb = new ProcessBuilder();
-
-        List<String> builderList = new ArrayList<>();
-        builderList.add("cmd.exe");
-        builderList.add("/C");
-        builderList.add(command);
-
         try {
-            pb.command(builderList);
-            pb.redirectErrorStream(true); // Combine error stream with standard output stream
+
+            ProcessBuilder pb = new ProcessBuilder("sh", "-c", command);
+            pb.directory(new File(System.getProperty("user.home")));
+            pb.redirectErrorStream(true);
             Process process = pb.start();
 
             // Use a StringBuilder to capture the output
@@ -38,7 +34,6 @@ public class Windows {
                 }
             }
 
-            // Wait for the process to complete with a timeout
             boolean finished = process.waitFor(10, TimeUnit.SECONDS); // 10-second timeout
             if (!finished) {
                 process.destroy(); // Kill the process if it exceeds the timeout

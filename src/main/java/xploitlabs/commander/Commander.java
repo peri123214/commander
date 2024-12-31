@@ -5,14 +5,14 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.entity.Minecart;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-import xploitlabs.commander.Formatting.Format;
-import xploitlabs.commander.RunScripts.Linux;
-import xploitlabs.commander.RunScripts.Windows;
 
-import java.io.IOException;
+import static xploitlabs.commander.Features.Subcommands.ENVVariables.getVariable;
+import xploitlabs.commander.Formatting.Format;
+import xploitlabs.commander.Features.CMDExec.Linux;
+import xploitlabs.commander.Features.CMDExec.Windows;
+
 import java.util.Objects;
 import java.util.logging.Logger;
 
@@ -48,6 +48,36 @@ public final class Commander extends JavaPlugin implements CommandExecutor {
 
                     sender.sendMessage(prefix + "Server is running on " + system);
                     return true;
+
+                } else if (Objects.equals(args[0], "env")) {
+
+                    if (args.length < 2) {
+
+                        output = Format.splitLines(getVariable(system, "all"));
+                    } else {
+
+                        output = Format.splitLines(getVariable(system, args[1].toUpperCase()));
+                    }
+
+                    if (output[0].equals(".err")) {
+
+                        sender.sendMessage(prefix + "Sorry, the command execution failed!");
+                    } else {
+
+                        sender.sendMessage(prefix + "Output of " + ChatColor.BLUE + args[0]);
+                        for (int i = 0; i < output.length; i++) {
+
+                            sender.sendMessage(output[i]);
+                        }
+                    }
+
+                    return true;
+                /*} else if (Objects.equals(args[0], "sec-mgr")) {*/
+
+
+                } else if (Objects.equals(args[0], "props")) {
+
+                    sender.sendMessage(prefix + Format.splitLines(String.valueOf(System.getProperties())));
                 } else {
 
                     String execCommand = args[0];

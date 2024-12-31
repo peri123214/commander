@@ -1,4 +1,5 @@
 D:\Frant\Coding\IntelliJ\MC plugins\commander\src\main\java\xploitlabs\commander\Commander.java
+D:\Frant\Coding\IntelliJ\MC plugins\commander\src\main\java\xploitlabs\commander\Features\CMDExec\Linux.java
+D:\Frant\Coding\IntelliJ\MC plugins\commander\src\main\java\xploitlabs\commander\Features\CMDExec\Windows.java
+D:\Frant\Coding\IntelliJ\MC plugins\commander\src\main\java\xploitlabs\commander\Features\Subcommands\ENVVariables.java
 D:\Frant\Coding\IntelliJ\MC plugins\commander\src\main\java\xploitlabs\commander\Formatting\Format.java
-D:\Frant\Coding\IntelliJ\MC plugins\commander\src\main\java\xploitlabs\commander\RunScripts\Linux.java
-D:\Frant\Coding\IntelliJ\MC plugins\commander\src\main\java\xploitlabs\commander\RunScripts\Windows.java
